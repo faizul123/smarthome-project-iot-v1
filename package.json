@@ -1,0 +1,30 @@
+{
+  "name": "smarthome-project-iot-v1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev":"node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faizul123/smarthome-project-iot-v1.git"
+  },
+  "author": "Faizul Ahmemed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faizul123/smarthome-project-iot-v1/issues"
+  },
+  "homepage": "https://github.com/faizul123/smarthome-project-iot-v1#readme",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.1",
+    "helmet": "^4.0.0",
+    "http-status": "^1.4.2",
+    "lodash": "^4.17.19",
+    "mongoose": "^5.9.28",
+    "xss-clean": "^0.1.1"
+  }
+}
