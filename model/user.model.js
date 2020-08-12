@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 const userSchema = mongoose.Schema(
     {
@@ -40,7 +40,7 @@ const userSchema = mongoose.Schema(
         },
         home:[
             {
-                homeId: String,
+                homeId: mongoose.Types.ObjectId,
                 homeIp:"",
                 location:{
                     type: {
@@ -61,8 +61,8 @@ const userSchema = mongoose.Schema(
     }
 );
 
-userSchema.statics.isEmailTaken = async function (email, excludeUserId) {
-    const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
+userSchema.statics.isEmailTaken = async function (email) {
+    const user = await this.findOne({ email });
     return !!user;
 };
 

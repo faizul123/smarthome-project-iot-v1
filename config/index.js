@@ -9,5 +9,12 @@ module.exports = {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         }
+    },
+    jwt: {
+        secret: process.env.JWT_SECRET || '1244',
+        accessExpirationMinutes: 60 * 10,
+        options:{
+            algorithm: 'RS256',
+        },
     }
 }
