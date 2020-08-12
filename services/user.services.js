@@ -1,5 +1,4 @@
 const httpStatus = require('http-status');
-const omit = require('lodash/omit');
 const User = require('../model/user.model');
 const ApiError = require('../utils/ApiError');
 
@@ -8,7 +7,7 @@ const createUser = async (userBody) => {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
   const user = await User.create(userBody);
-  return omit(user, ["__V", "createdAt", "updatedAt", "_id", "password"]);
+  return user;
 };
 
 const getUserById = async (id) => {

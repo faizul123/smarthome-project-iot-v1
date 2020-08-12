@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
+const toJSON = require('./toJSON.plugin');
 
 const userSchema = mongoose.Schema(
     {
@@ -61,13 +62,14 @@ const userSchema = mongoose.Schema(
     }
 );
 
+userSchema.plugin(toJSON);
+
 userSchema.statics.isEmailTaken = async function (email) {
     const user = await this.findOne({ email });
     return !!user;
 };
 
 userSchema.methods.isPasswordMatch = async function (password) {
-    const user = this;
     return bcrypt.compare(password, user.password);
 };
 

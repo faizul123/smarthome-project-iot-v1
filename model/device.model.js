@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
+const toJSON = require('./toJSON.plugin');
 
 const DeviceSchema = mongoose.Schema({
+    _id: {
+        type: String,
+        required: true,
+    },
     deviceName:{
         type: String,
         required: true,
@@ -9,10 +14,6 @@ const DeviceSchema = mongoose.Schema({
     model:{
         type: String,
         trim:true
-    },
-    deviceMacId: {
-        type: String,
-        required: true,
     },
     commands: [
         {
@@ -28,5 +29,7 @@ const DeviceSchema = mongoose.Schema({
         }
     ]
 });
+
+DeviceSchema.plugin(toJSON);
 
 module.exports = mongoose.model('Device', DeviceSchema);
