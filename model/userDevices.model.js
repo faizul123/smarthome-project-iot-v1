@@ -7,14 +7,6 @@ const userDeviceSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    macId: {
-        type: String,
-        required: true,
-    },
-    homeId: {
-        type: String,
-        required: true,
-    },
     devices: [String],
 });
 

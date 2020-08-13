@@ -6,24 +6,25 @@ const DeviceSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    deviceName:{
+    deviceName: {
         type: String,
         required: true,
         trim: true
     },
-    model:{
+    model: {
         type: String,
         trim:true
     },
-    commands: [
+    macId: {
+        type: String,
+        trim: true,
+        required: true,
+    },
+    status: [
         {
             name: {
                 type: String,
                 trim:true,
-            },
-            valueType: {
-                type: String,
-                trim: true
             },
             value: mongoose.Mixed,
         }

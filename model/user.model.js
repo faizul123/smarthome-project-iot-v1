@@ -39,23 +39,6 @@ const userSchema = mongoose.Schema(
             },
             private: true, // used by the toJSON plugin
         },
-        home:[
-            {
-                homeId: mongoose.Types.ObjectId,
-                homeIp:"",
-                location:{
-                    type: {
-                    type: String,
-                    enum: ['Point'],
-                    required: true
-                  },
-                  coordinates: {
-                    type: [Number],
-                    required: true
-                  }
-                }
-            }
-        ]
     },
     {
         timestamps: true,
@@ -70,7 +53,7 @@ userSchema.statics.isEmailTaken = async function (email) {
 };
 
 userSchema.methods.isPasswordMatch = async function (password) {
-    return bcrypt.compare(password, user.password);
+    return bcrypt.compare(password, this.password);
 };
 
 userSchema.pre('save', async function (next) {
